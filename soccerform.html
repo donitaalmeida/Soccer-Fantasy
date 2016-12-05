@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/style.css"></link>
+  <script>
+  function checkAdmin(){
+    var element=document.getElementById("admin");
+    element.style.visibility="visible";
+  }
+
+
+
+  $(document).ready(function () {
+    $(".vertical a").click(function (event) {
+      var id=event.target.name;
+
+      var ids=["mytourdiv","myclubdiv","myleaguediv","myplayerdiv"];
+      var frm=["test1","test2","test3","test4"];
+
+      for(var i in ids){
+          $("#"+ids[i]).css("display","none");
+          $("iframe[name="+frm[i]+"]").css("display","none");
+          if(id==ids[i])
+            var temp=frm[i];
+      }
+      $("#"+id).css("display","block");
+        $("iframe[name="+temp+"]").css("display","block");
+    });
+  });
+  </script>
+</head>
+<body background="background.jpg">
+<div class="container-fluid" style="padding:5px;height:80%;border-radius:  5px 5px 5px 5px;">
+  <nav class="navbar navbar-inverse" style="margin-bottom:0px;">
+    <div class="container-fluid">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      <span class="navbar-brand">  <a href="#"><img src="football.png"
+              style="height:100%;"
+              alt="" /></a>Soccer Fantasy</span>
+
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Search</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
+        </ul>
+      </div>
+    </div>
+    <img src="clubs1.png" width="100%" height="60px;" style="border:1px solid #;border-radius: 15px 50px;">
+
+  </nav>
+  <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+  		<div class="loginmodal-container">
+  			<h1>Login to Your Admin Account</h1><br>
+  			<form action="admin.html">
+  			<input type="text" name="user" placeholder="Username">
+  			<input type="password" name="pass" placeholder="Password">
+  			<input type="submit" name="login" class="login loginmodal-submit" value="Login" onclick="checkAdmin()">
+  			</form>
+  			<div class="login-help">
+  			</div>
+  		</div>
+  			</div>
+  	</div>
+
+<div  class="vertical" >
+<ul>
+  <li>
+    <a href="#" name="mytourdiv">Tournaments</a>
+
+</li>
+<li>
+  <a href="#" name="myclubdiv" >Clubs</a>
+
+</li>
+<li>
+    <a href="#" name="myleaguediv">League</a>
+</li>
+<li>
+  <a href="#" name="myplayerdiv">Players</a>
+
+</li>
+</ul>
+<div style="height:200px;">
+<form action="searchResults.php" method="post" target="test1">
+<fieldset style="padding-left:25%;display:none;" id="mytourdiv" >
+
+
+<input type="radio" name="searchtype" value="teamintour" id="teamintour" checked /> Teams in a tournament
+
+<input type="radio" name="searchtype" value="tourstat" id="tourstat" /> Game details of a tournament
+
+<div id="gamediv" >
+Enter Tournament Name:
+<input type="text" id="tourName" name="tourname"/>
+</div>
+
+<input class="btn btn-primary" type="submit" value="Submit"/>
+      <iframe name="test1"  style="border:none;" height="400px;" width="100%"></iframe>
+</fieldset>
+</form>
+
+<form  action="searchResults.php" method="post" target="test2">
+
+      <fieldset id="myclubdiv" style="padding-left:20%;display:none;height:100px;">
+          <p>
+            <input type="radio"
+               name="searchtype"
+               value="clubmem"
+               id="clubmem"
+                 checked onclick="document.getElementById('goaldiv').style.display='none';document.getElementById('clubdiv').style.display='block';" /> Members playing in a Club
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio"
+               name="searchtype"
+               value="clubgoal"
+               id="clubgoal" onclick="document.getElementById('goaldiv').style.display='block';document.getElementById('clubdiv').style.display='none';"/> Clubs with goals greater than
+          </p>
+          <div id="clubdiv">
+             Enter Club Name: <input type="text" id="clubname" name="clubname"/>
+          </div>
+          <div id="goaldiv" style="display:none">
+            Number of Goals > : <input type="number" id="goalno" name="goalno"/>
+          </div>
+          <p>
+          <input type="submit" class="btn btn-primary" value="Submit"/>
+          </p>
+          <iframe name="test2"  style="border:none;" height="400px;" width="100%"></iframe>
+        </fieldset>
+
+</form>
+
+<form action="searchResults.php" method="post" target="test3">
+<fieldset style="padding-left:25%;display:none;" id="myleaguediv" >
+
+
+<input type="radio" name="searchtype" value="teaminleague" id="teaminleague" checked /> Teams in a League
+
+<input type="radio" name="searchtype" value="leaguestat" id="leaguestat" /> Game details of a League
+
+<div id="leaguegamediv" >
+Enter Tournament Name:
+<input type="text" id="leagueName" name="leaguename"/>
+</div>
+
+<input class="btn btn-primary" type="submit" value="Submit"/>
+      <iframe name="test3"  style="border:none;" height="400px;" width="100%"></iframe>
+</fieldset>
+</form>
+
+<form action="searchResults.php" method="post" target="test4">
+      <fieldset id="myplayerdiv" style="padding-left:25%;display:none;">
+          <p>
+
+            <input type="radio"
+               name="searchtype"
+               value="playerdet"
+               id="playerdet" checked style="display:none;""/> Search any Player
+          </p>
+          <div id="playerdiv" >
+             Enter player Name : <input type="text" id="playername" name="playername"/><br><br>
+             Age less than < : <input type="number" id="age" name="age"/><br><br>
+             Height greater than >= : <input type="number" id="height" name="height"/>
+          </div>
+          <p>
+          <input type="submit" class="btn btn-primary" value="Submit"/>
+          </p>
+          <iframe name="test4"  style="border:none;" height="400px;" width="100%"></iframe>
+        </fieldset>
+</form>
+</div>
+</div>
+</body>
+</html>
