@@ -76,22 +76,27 @@
 <div  class="vertical" >
 <ul>
   <li>
-    <a href="#" name="myaddplayerdiv">Add Player</a>
+    <a href="#" name="myaddplayerdiv">Add New Player</a>
 
 </li>
 <li>
-  <a href="#" name="myaddmanagerdiv">Add Manager</a>
+  <a href="#" name="mymanagerplayerdiv">Manage Player</a>
 
 </li>
 
 
 </ul>
-<form action="" method="post">
+<form action="adminActivity.php" method="post">
   <fieldset style="padding-left:25%;display:none;" id="myaddplayerdiv" >
-    Add Player
+    First Name: <input type="text" name="player_fname" placeholder="Player First Name"><br>
+    Last Name:  <input type="text" name="player_lname" placeholder="Player Last Name"><br>
+    Country:    <input type="text" name="player_country" placeholder="Country"><br>
+    Height:  <input type="text" name="player_height" placeholder="Height"><br>
+    DoB:  <input type="text" name="player_dob" placeholder="DOB (mm/dd/yyyy)"><br>
+    <input type="submit" class="btn btn-primary" value="Submit"/>
   </fieldset>
-  <fieldset id="myaddmanagerdiv" style="padding-left:25%;display:none;">
-    Add Admin
+  <fieldset id="mymanagerplayerdiv" style="padding-left:25%;display:none;">
+    Add Manager
   </fieldset>
 
 
