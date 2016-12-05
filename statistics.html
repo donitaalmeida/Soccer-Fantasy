@@ -19,12 +19,17 @@
     $(".vertical a").click(function (event) {
       var id=event.target.name;
 
-      var ids=["myplayerstatsdiv","myclubstatsdiv","myolapdiv"];
+      var ids=["myplayerstatsdiv","myclubstatsdiv"];
+      var frm=["test1","test2"];
       for(var i in ids){
-
           $("#"+ids[i]).css("display","none");
+          $("iframe[name="+frm[i]+"]").css("display","none");
+          if(id==ids[i]){
+            var temp=frm[i];
+          }
       }
       $("#"+id).css("display","block");
+        $("iframe[name="+temp+"]").css("display","block");
     });
   });
   </script>
@@ -75,30 +80,31 @@
 <div  class="vertical" >
 <ul>
   <li>
-    <a href="#" name="myplayerstatsdiv">Player Stats</a>
-
+    <form id="playerstats" action="playerstatistics.php" method="post" target="test1">
+    <a href="#" name="myplayerstatsdiv" onclick="document.getElementById('playerstats').submit();">Player Stats</a>
+  </form>
 </li>
 <li>
-  <a href="#" name="myclubstatsdiv" >Club Stats</a>
+    <form id="clubstats" action="clubstatistics.php" method="post" target="test2">
+  <a href="#" name="myclubstatsdiv" onclick="document.getElementById('clubstats').submit();" >Club Stats</a>
+</form>
+</li>
 
-</li>
-<li>
-    <a href="#" name="myolapdiv">OLAP</a>
-</li>
 
 </ul>
-<form action="searchResults.php" method="post">
-  <fieldset style="padding-left:25%;display:none;" id="myplayerstatsdiv" >
-    Player stat
+
+  <fieldset style="padding-left:16%;display:none;" id="myplayerstatsdiv" >
+
+    <iframe name="test1"  style="border:none;" height="600px;" width="100%"></iframe>
+
   </fieldset>
-  <fieldset id="myclubstatsdiv" style="padding-left:25%;display:none;">
-    club stat
-  </fieldset>
-  <fieldset style="padding-left:25%;display:none;" id="myolapdiv" >
-    olap stat
+  <fieldset id="myclubstatsdiv" style="padding-left:16%;display:none;">
+    <iframe name="test2"  style="border:none;" height="600px;" width="100%"></iframe>
+
   </fieldset>
 
-</form>
+
+
 </div>
 </div>
 </body>
