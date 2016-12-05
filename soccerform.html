@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/style.css"></link>
+  <link rel="stylesheet" href="style.css"></link>
   <script>
   function checkAdmin(){
     var element=document.getElementById("admin");
@@ -62,7 +62,7 @@
         </ul>
       </div>
     </div>
-    <img src="clubs1.png" width="100%" height="60px;" style="border:1px solid #;border-radius: 15px 50px;">
+    <img  src="clubs.png" width="90% height="60px;" style="margin-left:50px;border:1px solid #;border-radius: 15px 50px;">
 
   </nav>
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -100,18 +100,19 @@
 </ul>
 <div style="height:200px;">
 <form action="searchResults.php" method="post" target="test1">
-<fieldset style="padding-left:25%;display:none;" id="mytourdiv" >
+<fieldset style="padding-left:25%;display:none;width:50%;" id="mytourdiv" >
 
 
-<input type="radio" name="searchtype" value="teamintour" id="teamintour" checked /> Teams in a tournament
-
-<input type="radio" name="searchtype" value="tourstat" id="tourstat" /> Game details of a tournament
-
-<div id="gamediv" >
-Enter Tournament Name:
-<input type="text" id="tourName" name="tourname"/>
+<div class="radio ">
+<label><input type="radio"  name="searchtype" value="teamintour" id="teamintour" checked /> Teams in a tournament</lable>
 </div>
-
+<div class="radio ">
+<label><input type="radio"  name="searchtype" value="tourstat" id="tourstat" /> Game details of a tournament</label>
+</div>
+<div id="gamediv" >
+Enter Tournament Name: <input class="form-control" type="text" id="tourName" name="tourname"/>
+</div>
+<br>
 <input class="btn btn-primary" type="submit" value="Submit"/>
       <iframe name="test1"  style="border:none;" height="400px;" width="100%"></iframe>
 </fieldset>
@@ -119,24 +120,25 @@ Enter Tournament Name:
 
 <form  action="searchResults.php" method="post" target="test2">
 
-      <fieldset id="myclubdiv" style="padding-left:20%;display:none;height:100px;">
-          <p>
-            <input type="radio"
-               name="searchtype"
+      <fieldset id="myclubdiv" style="padding-left:20%;display:none;height:100px;width:50%;">
+
+            <div class="radio">
+            <label><input type="radio"  name="searchtype"
                value="clubmem"
                id="clubmem"
-                 checked onclick="document.getElementById('goaldiv').style.display='none';document.getElementById('clubdiv').style.display='block';" /> Members playing in a Club
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio"
+                 checked onclick="document.getElementById('goaldiv').style.display='none';document.getElementById('clubdiv').style.display='block';" /> Members playing in a Club</label>
+        </div>
+        <div class="radio">
+          <label>  <input type="radio"
                name="searchtype"
                value="clubgoal"
-               id="clubgoal" onclick="document.getElementById('goaldiv').style.display='block';document.getElementById('clubdiv').style.display='none';"/> Clubs with goals greater than
-          </p>
+               id="clubgoal" onclick="document.getElementById('goaldiv').style.display='block';document.getElementById('clubdiv').style.display='none';"/> Clubs with goals greater than</label>
+          </div>
           <div id="clubdiv">
-             Enter Club Name: <input type="text" id="clubname" name="clubname"/>
+             Enter Club Name: <input type="text" class="form-control" id="clubname" name="clubname"/>
           </div>
           <div id="goaldiv" style="display:none">
-            Number of Goals > : <input type="number" id="goalno" name="goalno"/>
+            Number of Goals > : <input  class="form-control" type="number" id="goalno" name="goalno"/>
           </div>
           <p>
           <input type="submit" class="btn btn-primary" value="Submit"/>
@@ -147,16 +149,17 @@ Enter Tournament Name:
 </form>
 
 <form action="searchResults.php" method="post" target="test3">
-<fieldset style="padding-left:25%;display:none;" id="myleaguediv" >
+<fieldset style="padding-left:25%;display:none;width:50%;" id="myleaguediv" >
 
-
-<input type="radio" name="searchtype" value="teaminleague" id="teaminleague" checked /> Teams in a League
-
-<input type="radio" name="searchtype" value="leaguestat" id="leaguestat" /> Game details of a League
-
+<div class="radio">
+<label><input type="radio" name="searchtype" value="teaminleague" id="teaminleague" checked /> Teams in a League</label>
+</div>
+<div class="radio" >
+<label><input type="radio" class="radio" name="searchtype" value="leaguestat" id="leaguestat" /> Game details of a League</label>
+</div>
 <div id="leaguegamediv" >
 Enter Tournament Name:
-<input type="text" id="leagueName" name="leaguename"/>
+<input type="text" class="form-control" id="leagueName" name="leaguename"/>
 </div>
 
 <input class="btn btn-primary" type="submit" value="Submit"/>
@@ -165,18 +168,36 @@ Enter Tournament Name:
 </form>
 
 <form action="searchResults.php" method="post" target="test4">
-      <fieldset id="myplayerdiv" style="padding-left:25%;display:none;">
+      <fieldset id="myplayerdiv" style="padding-left:25%;display:none; width:50%;">
           <p>
 
-            <input type="radio"
+            <input type="radio" class="radio"
                name="searchtype"
                value="playerdet"
-               id="playerdet" checked style="display:none;""/> Search any Player
+               id="playerdet" checked style="display:none;""/>  
           </p>
           <div id="playerdiv" >
-             Enter player Name : <input type="text" id="playername" name="playername"/><br><br>
-             Age less than < : <input type="number" id="age" name="age"/><br><br>
-             Height greater than >= : <input type="number" id="height" name="height"/>
+            <fieldset>
+             Enter player Name: <input class="form-control" type="text" id="playername" name="playername"/>
+
+             Height greater than: <input class="form-control" type="number" id="height" name="height"/>
+             Player Position: <select class="form-control" name="position">
+                                <option></option>
+                                <option value="CM">Center Midfield</option>
+                                <option value="CAM">Central Attack Midfielder</option>
+                                <option value="CB">Central Back</option>
+                                <option value="CDM">Central Defensive Midfielder</option>
+                                <option value="CF">Central Forward</option>
+                                <option value="LB">Left Back</option>
+                                <option value="LM">Left Midfield</option>
+                                <option value="LW">Left Midfield</option>
+                                <option value="LWB">Left Wing Back</option>
+                                <option value="RB">Right Back</option>
+                                <option value="RM">Right Midfield</option>
+                                <option value="ST">Striker</option>
+
+                              </select>
+                            </fieldset>
           </div>
           <p>
           <input type="submit" class="btn btn-primary" value="Submit"/>

@@ -20,11 +20,16 @@
       var id=event.target.name;
 
       var ids=["myaddplayerdiv","myaddmanagerdiv"];
-      for(var i in ids){
-
-          $("#"+ids[i]).css("display","none");
-      }
-      $("#"+id).css("display","block");
+        var frm=["test1","test2"];
+        for(var i in ids){
+            $("#"+ids[i]).css("display","none");
+            $("iframe[name="+frm[i]+"]").css("display","none");
+            if(id==ids[i]){
+              var temp=frm[i];
+            }
+        }
+        $("#"+id).css("display","block");
+          $("iframe[name="+temp+"]").css("display","block");
     });
   });
   </script>
@@ -56,7 +61,7 @@
         </ul>
       </div>
     </div>
-    <img src="clubs1.png" width="100%" height="60px;" style="border:1px solid #;border-radius: 15px 50px;">
+    <img src="clubs.png" width="90%" height="60px;" style="margin-left:50px;border:1px solid #;border-radius: 15px 50px;">
 
   </nav>
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -86,16 +91,19 @@
 
 
 </ul>
-<form action="adminActivity.php" method="post">
-  <fieldset style="padding-left:25%;display:none;" id="myaddplayerdiv" >
-    First Name: <input type="text" name="player_fname" placeholder="Player First Name"><br>
-    Last Name:  <input type="text" name="player_lname" placeholder="Player Last Name"><br>
-    Country:    <input type="text" name="player_country" placeholder="Country"><br>
-    Height:  <input type="text" name="player_height" placeholder="Height"><br>
-    DoB:  <input type="text" name="player_dob" placeholder="DOB (mm/dd/yyyy)"><br>
+<form action="adminActivity.php" method="post" target="test1">
+  <fieldset style="padding-left:25%;display:none;width:50%;" id="myaddplayerdiv" >
+    First Name: <input class="form-control" type="text" name="player_fname" placeholder="Player First Name"><br>
+    Last Name:  <input class="form-control" type="text" name="player_lname" placeholder="Player Last Name"><br>
+    Country:    <input class="form-control" type="text" name="player_country" placeholder="Country"><br>
+    Height:  <input class="form-control" type="text" name="player_height" placeholder="Height"><br>
+    DoB:  <input class="form-control" type="text" name="player_dob" placeholder="DOB (mm/dd/yyyy)"><br>
     <input type="submit" class="btn btn-primary" value="Submit"/>
+<iframe name="test1"  style="border:none;" height="100px;" width="100%"></iframe>
   </fieldset>
-  <fieldset id="mymanagerplayerdiv" style="padding-left:25%;display:none;">
+
+
+  <fieldset id="myaddmanagerdiv" style="padding-left:25%;display:none;">
     Add Manager
   </fieldset>
 
