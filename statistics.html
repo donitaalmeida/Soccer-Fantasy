@@ -19,8 +19,8 @@
     $(".vertical a").click(function (event) {
       var id=event.target.name;
 
-      var ids=["myplayerstatsdiv","myclubstatsdiv"];
-      var frm=["test1","test2"];
+      var ids=["myplayerstatsdiv","myclubstatsdiv","myolapdiv"];
+      var frm=["test1","test2","test3"];
       for(var i in ids){
           $("#"+ids[i]).css("display","none");
           $("iframe[name="+frm[i]+"]").css("display","none");
@@ -89,7 +89,9 @@
   <a href="#" name="myclubstatsdiv" onclick="document.getElementById('clubstats').submit();" >Club Stats</a>
 </form>
 </li>
-
+	<li>
+	    <a href="#" name="myolapdiv">OLAP</a>
+	</li>			</li>
 
 </ul>
 
@@ -102,8 +104,61 @@
     <iframe name="test2"  style="border:none;" height="600px;" width="100%"></iframe>
 
   </fieldset>
+  <form action="olapResults.php" method="post" target="test3">
+  <fieldset style="padding-left:25%;display:none;padding
+  -top:25px" id="myolapdiv" >
+        <p>
+        <input type="radio"
+               name="searchtype"
+               value="drill"
+               id="drill" onclick="document.getElementById('drilldiv').style.display='block';document.getElementById('slicediv').style.display='none';document.getElementById('dicediv').style.display='none';" /> Drill up & Drill Down
+
+         &nbsp;&nbsp;
+            <input type="radio"
+               name="searchtype"
+               value="slice"
+               id="slice" onclick="document.getElementById('slicediv').style.display='block';document.getElementById('drilldiv').style.display='none';document.getElementById('dicediv').style.display='none';"/> Slice
+
+               &nbsp;&nbsp;
+            <input type="radio"
+               name="searchtype"
+               value="dice"
+               id="dice" onclick="document.getElementById('dicediv').style.display='block';document.getElementById('drilldiv').style.display='none';document.getElementById('slicediv').style.display='none';"/> Dice
 
 
+        </p>
+         <p>
+             <div id="drilldiv" style="display:none">
+                 Choose the OLAP Operation :  <select name="option" id="option">
+
+                     <option value="up" selected>Drill Up to Country</option>
+                     <option value="state">State Level Game Details</option>
+                     <option value="down">Drill Down to City</option>
+
+                   </select>
+              </div>
+           </p><br>
+
+           <p>
+            <div id="slicediv" style="display:none">
+              Select State: <input size="35" type="text" id="state1" name="state1"/><br>
+          </div>
+          </p><br>
+          <p>
+          <div id="dicediv" style="display:none">
+              Enter Months:  <input size="35" type="text" id="month" name="month"/>&nbsp;&nbsp;&nbsp;&nbsp;
+
+              Enter States:  <input size="35" type="text" id="state2" name="state2"/><br>
+
+
+          </div>
+          </p><br>
+          <p>
+          <input type="submit" value="Submit"  class="btn btn-primary" />
+          </p>
+          <iframe name="test3"  style="border:none;" height="600px;" width="100%"></iframe>
+  </fieldset>
+</form>
 
 </div>
 </div>
