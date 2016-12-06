@@ -102,7 +102,7 @@
    width: 15%;
    height: 700px;
    background-color:black;
-   position: fixed;
+   position: absolute;
    border-radius:  5px 5px 5px 5px;
    overflow: auto;
    text-decoration: none;
